@@ -22,7 +22,7 @@ def taskdetail(request):
 
 @api_view(['GET'])
 def taskget(request,pk):
-    tasks=User.objects.get(name=pk)
+    tasks=User.objects.get(id=pk)
     serializer=UserSerializer(tasks,many=False)
     return Response(serializer.data)
 
