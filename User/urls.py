@@ -23,4 +23,5 @@ urlpatterns = [
     path('taskdetail', views.taskdetail, name='details'),
     path('taskget/<str:pk>', views.taskget, name='detailsget'),
     path('taskpost', views.taskpost, name='postdetails'),
+    path('taskput/<str:pk>', views.taskput, name='putdetails'),
 ]

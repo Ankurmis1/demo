@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -33,3 +34,13 @@ def taskpost(request):
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
+
+@api_view(['PUT'])
+def taskput(request,pk):
+    tasks=User.objects.get(id=pk)
+    serializer=UserSerializer(tasks,data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
